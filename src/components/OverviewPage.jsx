@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 
 import { Container } from './styled'
 
-const OverviewPage = ({overview, getOverview, employee}) => {
+const OverviewPage = ({overview}) => {
 
   useEffect(() => {
   }, [overview])

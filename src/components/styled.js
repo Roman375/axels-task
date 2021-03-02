@@ -35,5 +35,10 @@ export const Wrapp = styled.div `
 export const Search = styled.form `
   display: flex;
   justify-content: center;
-  width: 50%
+  width: 50%;
+`
+
+export const Text = styled.h1 `
+  display: flex;
+  justify-content: center;
 `

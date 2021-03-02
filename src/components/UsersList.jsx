@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Container, Wrapp } from './styled'
+import { Container, Wrapp, Text } from './styled'
 import SearchBar from './SearchBar'
 
 const UsersList = ({ employees, getOverview }) => {
@@ -23,7 +23,9 @@ const UsersList = ({ employees, getOverview }) => {
     <>
       <SearchBar handleChange={handleChange} />
       <Container>
-        {searchResults.map((employee, index) => (
+        {
+        searchResults.length > 0 ?
+        searchResults.map((employee, index) => (
           <Wrapp key={index}>
             <h3>{employee}</h3>
             <Link
@@ -33,7 +35,7 @@ const UsersList = ({ employees, getOverview }) => {
               Overview page
             </Link>
           </Wrapp>
-        ))}
+        )) : <Text>No Employees</Text>}
       </Container>
     </>
   )
