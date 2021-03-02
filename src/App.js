@@ -11,15 +11,17 @@ const App = () => {
   const [employees, setEmployees] = useState([])
   const [overview, setOverview] = useState([])
 
-  const getEmployees = () => {
-    axios.get(`http://api.additivasia.io/api/v1/assignment/employees`)
+  const getEmployees = async () => {
+  await axios.get(`http://api.additivasia.io/api/v1/assignment/employees`)
     .then((response) => setEmployees(response.data))
   }
-  const getOverview = (employeeName) => {
-    axios.get(`http://api.additivasia.io/api/v1/assignment/employees/${employeeName}`)
-      .then((response) => setOverview(response.data))
+  const getOverview = async (employeeName) => {
+   await  axios.get(`http://api.additivasia.io/api/v1/assignment/employees/${employeeName}`)
+      .then((response) => setOverview(response.data)
+      )
   }
 
+  
   useEffect(() => {
     getEmployees()
   }, [])
