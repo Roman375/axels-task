@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Container, Wrapp, Text } from './styled'
 import SearchBar from './SearchBar'
 
-const UsersList = ({ employees, getOverview }) => {
+const UsersList = ({ employees, getOverview  }) => {
   const [searchTerm, setSearchTerm] = React.useState('')
   const [searchResults, setSearchResults] = React.useState([])
   const handleChange = (event) => {
@@ -17,8 +17,6 @@ const UsersList = ({ employees, getOverview }) => {
     setSearchResults(results)
   }, [searchTerm, employees, getOverview])
 
-  
-
   return (
     <>
       <SearchBar handleChange={handleChange} />
@@ -30,7 +28,7 @@ const UsersList = ({ employees, getOverview }) => {
             <h3>{employee}</h3>
             <Link
               to={`/overview/${employee}`}
-              onClick={() => getOverview(Object.values({ employee }))}
+              onClick={() => {getOverview(Object.values({ employee }))}}
             >
               Overview page
             </Link>
