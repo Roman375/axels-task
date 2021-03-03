@@ -1,0 +1,4 @@
+export const SET_EMPLOYEE = 'SET_EMPLOYEE'
+export const SET_OVERVIEW = 'SET_OVERVIEW'
+export const LOAD_EMPLOYEE = 'LOAD_EMPLOYEE'
+export const LOAD_OVERVIEW = 'LOAD_OVERVIEW'

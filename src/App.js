@@ -5,8 +5,7 @@ import {Container} from './styled'
 import UsersList from './components/UsersList'
 import OverviewPage from './components/OverviewPage'
 import { connect } from 'react-redux'
-import { getEmployee } from './redux/employeeReducer'
-import { getOverviews } from './redux/overviewReducer'
+import { getEmployee, getOverviews } from './redux/actions'
 
 const App = ({getEmployee, getOverviews, ...props}) => {
 

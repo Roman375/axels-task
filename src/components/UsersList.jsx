@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
 import { Container, Wrapp, Text } from './styled'
@@ -7,10 +7,12 @@ import SearchBar from './SearchBar'
 const UsersList = ({ employees, getOverview  }) => {
   const [searchTerm, setSearchTerm] = React.useState('')
   const [searchResults, setSearchResults] = React.useState([])
+  
   const handleChange = (event) => {
     setSearchTerm(event.target.value)
   }
-  React.useEffect(() => {
+  
+  useEffect(() => {
     const results = employees.filter((employee) =>
       employee.toLowerCase().includes(searchTerm)
     )

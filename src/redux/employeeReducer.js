@@ -1,8 +1,6 @@
-import { employeeAPI } from '../api/api'
-const SET_EMPLOYEE = 'SET_EMPLOYEE'
+import {SET_EMPLOYEE} from './types'
 
 const initialState = []
-
 
 const employee = (state = initialState, action) => {
   switch (action.type) {
@@ -12,17 +10,6 @@ const employee = (state = initialState, action) => {
       return state
   }
 }
-
-export const setEmployee = (payload) => {
-  return { type: SET_EMPLOYEE, payload }
-}
-
-export const getEmployee = () => async (dispatch) => {
-  const response = await employeeAPI.getEmployees()
-  dispatch(setEmployee(response.data))
-}
-
-
 
 export default employee
 
