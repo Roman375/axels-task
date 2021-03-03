@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Search } from './styled'
+import { Search } from '../styled/SearchBar'
 
 const SearchBar = ({handleChange}) => {
   return (

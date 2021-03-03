@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router'
+import { connect } from 'react-redux'
 
 import {Container} from './styled'
-import UsersList from './components/UsersList'
-import OverviewPage from './components/OverviewPage'
-import { connect } from 'react-redux'
+import { UsersList, OverviewPage } from './components'
 import { getEmployee, getOverviews } from './redux/actions'
 
 const App = ({getEmployee, getOverviews, ...props}) => {

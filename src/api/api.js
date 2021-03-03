@@ -8,7 +8,6 @@ export const employeeAPI = {
 
 export const overviewAPI = {
   getOverviews(employeeName) {
-    debugger
     return axios.get(`http://api.additivasia.io/api/v1/assignment/employees/${employeeName}`)
   },
 }

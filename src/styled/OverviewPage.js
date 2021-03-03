@@ -20,24 +20,6 @@ export const Container = styled.section `
   }
 `
 
-
-export const Wrapp = styled.div `
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #E6E4E4;
-  border-radius: -8px;
-  padding: 10px;
-  align-items: center;
-  
-`
-
-export const Search = styled.form `
-  display: flex;
-  justify-content: center;
-  width: 50%;
-`
-
 export const Text = styled.h1 `
   display: flex;
   justify-content: center;

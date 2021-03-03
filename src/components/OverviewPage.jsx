@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { Container, Text } from './styled'
+import { Container, Text } from '../styled/OverviewPage'
 
 const OverviewPage = ({ overview }) => {
   useEffect(() => {}, [overview])
