@@ -4,7 +4,7 @@ import { employeeAPI, overviewAPI  } from '../api/api'
 import {LOAD_EMPLOYEE, SET_EMPLOYEE, SET_OVERVIEW, LOAD_OVERVIEW} from './types'
 
 // Employees
-export function* watchedEmployees() {
+function* watchedEmployees() {
   yield takeLeading(LOAD_EMPLOYEE, workerloadEmployees)
 }
 
@@ -19,7 +19,7 @@ async function fetchEmployee() {
 }
 
 // Overviews
-export function* watchedOverviews() {
+function* watchedOverviews() {
   yield takeLeading(LOAD_OVERVIEW, workerloadOverviews)
 }
 
@@ -34,3 +34,7 @@ async function fetchOverview(args) {
   return response.data
 }
 
+export {
+  watchedEmployees,
+  watchedOverviews
+}
