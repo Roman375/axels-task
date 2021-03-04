@@ -1,42 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router'
-import axios from 'axios'
+import { connect } from 'react-redux'
 
 import {Container} from './styled'
-import UsersList from './components/UsersList'
-import OverviewPage from './components/OverviewPage'
+import { UsersList, OverviewPage } from './components'
+import { getEmployee, getOverviews } from './redux/actions'
 
+const App = ({getEmployee, getOverviews, ...props}) => {
 
-const App = () => {
-  const [employees, setEmployees] = useState([])
-  const [overview, setOverview] = useState([])
-
-  const getEmployees = () => {
-    axios.get(`http://api.additivasia.io/api/v1/assignment/employees`)
-    .then((response) => setEmployees(response.data))
-  }
-  const getOverview = (employeeName) => {
-    axios.get(`http://api.additivasia.io/api/v1/assignment/employees/${employeeName}`)
-      .then((response) => setOverview(response.data))
+  const getOverview = async (employeeName) => {
+    await getOverviews(employeeName)
   }
 
   useEffect(() => {
-    getEmployees()
-  }, [])
-
+   getEmployee()
+   
+  }, [getEmployee])
 
   return (
     <Container>
-      
       <Switch>
       <Route exact path='/' render={() => 
-      <UsersList employees={employees} getOverview={getOverview}/>}/>
+      <UsersList employees={props.employees} getOverview={getOverview}/>}/>
       <Route exact path='/overview/:employee?' render={() => 
-      <OverviewPage overview={overview} />}/>
-      
+      <OverviewPage overview={props.overviews} />}/>
       </Switch>
     </Container>
   )
 }
 
-export default App
+const mapStateToPrors = (state) => {
+  return{
+    employees: state.employees,
+    overviews: state.overviews
+  }
+}
+
+export default connect(mapStateToPrors, {getEmployee, getOverviews})(App)
