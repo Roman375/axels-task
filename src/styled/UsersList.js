@@ -4,15 +4,14 @@ export const Container = styled.section `
   margin: 0 auto;
   width: 100%;
   padding: 20px 40px;
-
-  a{
+  a {
     text-decoration: none;
     background-color: #AC1D00;
     color: #ffffff;
     padding: 10px;
     border-radius: 5px;
   }
-  a:hover{
+  a:hover {
     background-color: black
   }
 `
@@ -24,7 +23,6 @@ export const Wrapp = styled.div `
   border-radius: -8px;
   padding: 10px;
   align-items: center;
-  
 `
 export const Text = styled.h1 `
   display: flex;
