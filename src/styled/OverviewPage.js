@@ -7,15 +7,14 @@ export const Container = styled.section `
   justify-content: center;
   width: 100%;
   padding: 20px 40px;
-
-  a{
+  a {
     text-decoration: none;
     background-color: #AC1D00;
     color: #ffffff;
     padding: 10px;
     border-radius: 5px;
   }
-  a:hover{
+  a:hover {
     background-color: black
   }
 `
