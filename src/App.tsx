@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Route, Switch } from 'react-router'
 import { connect } from 'react-redux'
 
@@ -7,9 +7,16 @@ import { UsersList, OverviewPage } from './components'
 import { getEmployee } from './redux/ducks/employees'
 import { getOverviews } from './redux/ducks/overviews'
 
-const App = ({getEmployee, getOverviews, ...props}) => {
+type Props = {
+  getEmployee: () => void
+  getOverviews: (employeeName: string) => void
+  employees: []
+  overviews: Array<object>
+}
 
-  const getOverview = async (employeeName) => {
+const App: FC<Props> = ({getEmployee, getOverviews, ...props}) => {
+
+  const getOverview = async (employeeName: string) => {
     await getOverviews(employeeName)
   }
 
@@ -30,7 +37,7 @@ const App = ({getEmployee, getOverviews, ...props}) => {
   )
 }
 
-const mapStateToPrors = (state) => {
+const mapStateToPrors = (state: any) => {
   return{
     employees: state.employees,
     overviews: state.overviews

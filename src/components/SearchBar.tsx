@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { Search } from '../styled/SearchBar'
 
-const SearchBar = ({ handleChange }) => (
+type Props = {
+  handleChange: (event: any) => void
+}
+
+const SearchBar: FC<Props> = ({ handleChange }) => (
   <Search>
     <input
       className="form-control me-2"

@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 
 import { Container, Text } from '../styled/OverviewPage'
 
-const OverviewPage = ({overview}) => {
+type Props = {
+  overview: Array<object>
+}
+
+const OverviewPage: FC<Props> = ({overview}) => {
   
   useEffect(() => {
     console.log(overview);
@@ -11,7 +15,7 @@ const OverviewPage = ({overview}) => {
   return (
     <Container>
       <Text>Overview</Text>
-      {overview.map((description, index) => (
+      {overview.map((description: object, index: number) => (
         <div key={index}>
           <h3>{Object.values(description)}</h3>
         </div>
