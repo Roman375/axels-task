@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, SetStateAction, useEffect, useState } from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -7,7 +7,13 @@ import SearchBar from './SearchBar'
 
 type Props = {
   employees: [] 
-  getOverview: (employeeName: any) => void
+  getOverview: (employeeName: string) => void
+}
+
+export type eventType = {
+  target: {
+    value: SetStateAction<string>
+  }
 }
 
 const UsersList: FC<Props> = ({ employees, getOverview }) => {
@@ -15,12 +21,12 @@ const UsersList: FC<Props> = ({ employees, getOverview }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: eventType) => {
     setSearchTerm(event.target.value)
   };
 
   useEffect(() => {
-    const results = employees.filter((employee: any) =>
+    const results = employees.filter((employee: string) =>
       employee.toLowerCase().includes(searchTerm)
     )
     setSearchResults(results)
@@ -39,7 +45,7 @@ const UsersList: FC<Props> = ({ employees, getOverview }) => {
                   className="primary"
                   to={`/overview/${employee}`}
                   onClick={() => {
-                    getOverview(Object.values({ employee }))
+                    getOverview(employee)
                   }}
                 >
                   Overview page

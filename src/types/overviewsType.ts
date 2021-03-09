@@ -12,3 +12,7 @@ export type getOverviewsActionType = {
   type: typeof LOAD_OVERVIEW
   employeeName: string
 }
+
+export type getOverviewsType = {
+  data: Array<object>
+}

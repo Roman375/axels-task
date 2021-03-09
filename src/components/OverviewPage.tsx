@@ -8,9 +8,7 @@ type Props = {
 
 const OverviewPage: FC<Props> = ({overview}) => {
   
-  useEffect(() => {
-    console.log(overview);
-  }, [overview])
+  useEffect(() => {}, [overview])
 
   return (
     <Container>

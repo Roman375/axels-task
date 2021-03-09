@@ -14,6 +14,11 @@ type Props = {
   overviews: Array<object>
 }
 
+type mapStateToProrsType = {
+  employees: []
+  overviews: Array<object>
+}
+
 const App: FC<Props> = ({getEmployee, getOverviews, ...props}) => {
 
   const getOverview = async (employeeName: string) => {
@@ -37,11 +42,11 @@ const App: FC<Props> = ({getEmployee, getOverviews, ...props}) => {
   )
 }
 
-const mapStateToPrors = (state: any) => {
-  return{
+const mapStateToPrors = (state: mapStateToProrsType) => (
+  {
     employees: state.employees,
     overviews: state.overviews
   }
-}
+)
 
 export default connect(mapStateToPrors, {getEmployee, getOverviews})(App)

@@ -11,3 +11,7 @@ export type setEmployeeActionType = {
 export type getEmployeeActionType = {
   type: typeof LOAD_EMPLOYEE
 }
+
+export type fetchEmployeeType = {
+  data: Array<string>
+}
