@@ -1,11 +1,15 @@
 const SET_OVERVIEW = 'SET_OVERVIEW'
 const LOAD_OVERVIEW = 'LOAD_OVERVIEW'
 
-export type StateType = Array<object>
+type overviewsType = {
+  'direct-subordinates': string[]
+}
+
+export type StateType = (string | overviewsType)[]
 
 export type setOverviewActionType = {
   type: typeof SET_OVERVIEW
-  payload: Array<object>
+  payload: (string | overviewsType)[];
 }
 
 export type getOverviewsActionType = {
@@ -14,5 +18,5 @@ export type getOverviewsActionType = {
 }
 
 export type getOverviewsType = {
-  data: Array<object>
+  data: (string | overviewsType)[]
 }

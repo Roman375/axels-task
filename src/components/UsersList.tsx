@@ -6,7 +6,9 @@ import { Container, Text } from '../styled/UsersList'
 import SearchBar from './SearchBar'
 
 type Props = {
-  employees: [] 
+  employees: {
+    employees: string[]
+  } 
   getOverview: (employeeName: string) => void
 }
 
@@ -19,19 +21,21 @@ export type eventType = {
 const UsersList: FC<Props> = ({ employees, getOverview }) => {
 
   const [searchTerm, setSearchTerm] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState<Array<string>>([])
 
   const handleChange = (event: eventType) => {
     setSearchTerm(event.target.value)
   };
 
   useEffect(() => {
-    const results = employees.filter((employee: string) =>
+    const results: string[] = employees.employees.filter((employee) =>
       employee.toLowerCase().includes(searchTerm)
     )
     setSearchResults(results)
   }, [searchTerm, employees])
-
+  useEffect(()=> {
+  }, [employees.employees])
+  
   return (
     <>
      <SearchBar handleChange={handleChange} />

@@ -1,7 +1,9 @@
 const SET_EMPLOYEE = 'SET_EMPLOYEE'
 const LOAD_EMPLOYEE = 'LOAD_EMPLOYEE'
 
-export type StateType = Array<string>
+export type StateType = {
+  employees: Array<string>
+}
 
 export type setEmployeeActionType = {
   type: typeof SET_EMPLOYEE
@@ -13,5 +15,5 @@ export type getEmployeeActionType = {
 }
 
 export type fetchEmployeeType = {
-  data: Array<string>
+  data: string[]
 }

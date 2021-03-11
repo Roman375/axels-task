@@ -1,21 +1,30 @@
-import {call, put, takeLeading} from 'redux-saga/effects'
+import { call, put, takeLeading } from 'redux-saga/effects'
 
 import { overviewAPI } from '../../api/api'
-import { StateType, setOverviewActionType, getOverviewsActionType } from '../../types/overviewsType'
+import {
+  StateType,
+  setOverviewActionType,
+  getOverviewsActionType,
+} from '../../types/overviewsType'
 
-const SET_OVERVIEW = 'SET_OVERVIEW'
-const LOAD_OVERVIEW = 'LOAD_OVERVIEW'
+export const SET_OVERVIEW = 'SET_OVERVIEW'
+export const LOAD_OVERVIEW = 'LOAD_OVERVIEW'
 
-export const overview = (state: StateType = [], action: setOverviewActionType): Array<object> => {
+export const initialState = []
+
+export const overview = (
+  state: StateType = initialState,
+  action: setOverviewActionType
+): StateType => {
   switch (action.type) {
     case SET_OVERVIEW:
       return [...action.payload]
-      default:
-        return state
+    default:
+      return state
   }
 }
 
-const setOverview = (payload: Array<object>): setOverviewActionType => {
+export const setOverview = (payload: StateType): setOverviewActionType => {
   return { type: SET_OVERVIEW, payload }
 }
 
@@ -28,7 +37,7 @@ export function* watchedOverviews() {
 }
 
 function* workerloadOverviews(employeeName: getOverviewsActionType) {
-  const payload: Array<object> = yield call(fetchOverview , employeeName)
+  const payload: StateType = yield call(fetchOverview, employeeName)
   yield put(setOverview(payload))
 }
 

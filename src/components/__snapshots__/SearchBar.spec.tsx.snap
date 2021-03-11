@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchBar /> With Snapshot Testing Render component SearchBar" 1`] = `
+<form
+  className="sc-bdfBwQ hCXJer"
+>
+  <input
+    aria-label="Search"
+    className="form-control me-2"
+    onChange={[Function]}
+    placeholder="Search"
+    type="search"
+  />
+</form>
+`;
