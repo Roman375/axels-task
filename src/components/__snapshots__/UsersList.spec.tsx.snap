@@ -1,26 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<UserList /> With Snapshot Testing Render component UserList" 1`] = `
-Array [
-  <form
-    className="sc-hKgILt hBPRLS"
-  >
-    <input
-      aria-label="Search"
-      className="form-control me-2"
-      onChange={[Function]}
-      placeholder="Search"
-      type="search"
-    />
-  </form>,
-  <section
-    className="sc-bdfBwQ etUzSr row"
-  >
-    <h1
-      className="sc-dlfnbm eWtLSx"
-    >
-      No Employees
-    </h1>
-  </section>,
-]
-`;
+exports[`<UserList /> getEmployee is working render properly 1`] = `ReactWrapper {}`;

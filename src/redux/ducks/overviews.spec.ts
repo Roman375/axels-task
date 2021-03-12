@@ -1,3 +1,5 @@
+import { takeLeading } from '@redux-saga/core/effects'
+import { expectSaga } from 'redux-saga-test-plan'
 import {
   overview,
   LOAD_OVERVIEW,
@@ -5,9 +7,24 @@ import {
   initialState,
   getOverviews,
   setOverview,
+  watchedOverviews,
+  workerloadOverviews,
+  fetchOverview,
 } from './overviews'
 
 describe('Overviews', () => {
+  const action = {
+    type: SET_OVERVIEW,
+    payload: [
+      'John Hartman',
+      { 'direct-subordinates': ['Samad Pitt', 'Leanna Hogg'] },
+    ],
+  }
+  const employeeName = {
+    type: SET_OVERVIEW,
+    employeeName: 'John Hartman',
+  }
+
   //Snapshot
   describe('With Snapshot Testing', () => {
     it('handles ACTION_TYPE correctly', () => {
@@ -19,11 +36,6 @@ describe('Overviews', () => {
   //Reducer
   describe('Reducer testing', () => {
     it('SET_OVERVIEW', () => {
-      const action = {
-        type: SET_OVERVIEW,
-        payload: ['John Hartman', { 'direct-subordinates': ['d', 'f'] }],
-      }
-
       expect(overview(initialState, action)).toEqual([
         ...initialState,
         ...action.payload,
@@ -40,16 +52,34 @@ describe('Overviews', () => {
         employeeName,
       })
     })
-  })
-
-  describe('Action SET_OVERVIEW testing', () => {
-    const action = {
-      type: SET_OVERVIEW,
-      payload: ['John Hartman', { 'direct-subordinates': ['d', 'f'] }],
-    }
 
     it('setOverview()', () => {
       expect(setOverview(action.payload)).toEqual(action)
+    })
+  })
+
+  //Sagas
+  describe('Sagas testing', () => {
+    const genObject = watchedOverviews()
+
+    it('should wait for every LOAD_OVERVIEW action and call workerloadOverviews', () => {
+      expect(genObject.next().value).toEqual(
+        takeLeading(LOAD_OVERVIEW, workerloadOverviews)
+      )
+    })
+
+    it('fetches the overviews', () => {
+      return expectSaga(workerloadOverviews, employeeName)
+        .call(fetchOverview, employeeName)
+        .put({
+          type: SET_OVERVIEW,
+          payload: [
+            'CEO',
+            { 'direct-subordinates': ['Samad Pitt', 'Leanna Hogg'] },
+          ],
+        })
+        .dispatch({ type: SET_OVERVIEW, payload: [] })
+        .run()
     })
   })
 })
