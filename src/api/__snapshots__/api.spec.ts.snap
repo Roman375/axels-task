@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`With Snapshot Testing get employeeAPI correctly 1`] = `Promise {}`;
+
+exports[`With Snapshot Testing get overviewAPI correctly 1`] = `Promise {}`;

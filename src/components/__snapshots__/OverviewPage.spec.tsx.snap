@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OverviewPage /> With Snapshot Testing Render component OverviewPage" 1`] = `
+<section
+  className="sc-bdfBwQ iOXGZJ"
+>
+  <h1
+    className="sc-gsTCUz kNNvzq"
+  >
+    Overview
+  </h1>
+</section>
+`;

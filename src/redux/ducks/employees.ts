@@ -8,22 +8,26 @@ import {
   fetchEmployeeType,
 } from '../../types/employeesType'
 
-const SET_EMPLOYEE = 'SET_EMPLOYEE'
-const LOAD_EMPLOYEE = 'LOAD_EMPLOYEE'
+export const SET_EMPLOYEE = 'SET_EMPLOYEE'
+export const LOAD_EMPLOYEE = 'LOAD_EMPLOYEE'
+
+export const initialState = {
+  employees:[]
+}
 
 export const employee = (
-  state: StateType = [],
+  state: StateType = initialState,
   action: setEmployeeActionType
-): Array<string> => {
+): StateType => {
   switch (action.type) {
     case SET_EMPLOYEE:
-      return [...state, ...action.payload]
+      return {...state, employees: [...action.payload]}
     default:
       return state
   }
 }
 
-const setEmployee = (payload: Array<string>): setEmployeeActionType => {
+export const setEmployee = (payload: Array<string>): setEmployeeActionType => {
   return { type: SET_EMPLOYEE, payload }
 }
 
@@ -35,12 +39,12 @@ export function* watchedEmployees() {
   yield takeLeading(LOAD_EMPLOYEE, workerloadEmployees)
 }
 
-function* workerloadEmployees() {
+export function* workerloadEmployees() {
   const payload: Array<string> = yield call(fetchEmployee)
   yield put(setEmployee(payload))
 }
 
-async function fetchEmployee() {
+export async function fetchEmployee() {
   const response: fetchEmployeeType = await employeeAPI.getEmployees()
   return response.data
 }
