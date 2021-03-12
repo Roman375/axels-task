@@ -36,12 +36,12 @@ export function* watchedOverviews() {
   yield takeLeading(LOAD_OVERVIEW, workerloadOverviews)
 }
 
-function* workerloadOverviews(employeeName: getOverviewsActionType) {
+export function* workerloadOverviews(employeeName: getOverviewsActionType) {
   const payload: StateType = yield call(fetchOverview, employeeName)
   yield put(setOverview(payload))
 }
 
-async function fetchOverview(args: getOverviewsActionType) {
+export async function fetchOverview(args: getOverviewsActionType) {
   const employeeName: string = args.employeeName
   const response = await overviewAPI.getOverviews(employeeName)
   return response.data

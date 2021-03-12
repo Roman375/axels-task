@@ -1,8 +1,8 @@
-import renderer from 'react-test-renderer'
-import App from './App'
+import { mount } from 'enzyme'
 import { Provider } from 'react-redux'
 
 import store from './redux/store'
+import App from './App'
 
 describe('<App />', () => {
   const props = {
@@ -10,16 +10,20 @@ describe('<App />', () => {
     getOverviews: () => {},
     employees: [],
     overviews: [],
+    sayHi: () => {}
   }
 
-  describe('With Snapshot Testing', () => {
-    it('Render component App', () => {
-      const component = renderer.create(
-        <Provider store={store}>
-          <App {...props} />
-        </Provider>
-      )
-      expect(component).toMatchSnapshot()
+  describe('App render <HomePage />', () => {
+    const app = mount(
+      <Provider store={store}>
+        <App {...props}/>
+      </Provider>
+    )
+    
+    it('render properly', () => {
+      expect(app).toMatchSnapshot()
     })
+
+    expect(app.find('HomePage')).toHaveLength(1)
   })
 })

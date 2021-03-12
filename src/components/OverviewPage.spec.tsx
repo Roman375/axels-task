@@ -1,15 +1,21 @@
-import renderer from 'react-test-renderer'
+import { mount } from 'enzyme'
+
 import OverviewPage from './OverviewPage'
 
 describe('<OverviewPage />', () => {
   const props = {
-    overview: [],
+    overview: [
+      'John Hartman',
+      { 'direct-subordinates': ['Samad Pitt', 'Leanna Hogg'] },
+    ],
   }
+  const app = mount(<OverviewPage {...props} />)
 
-  describe('With Snapshot Testing', () => {
-    it('Render component OverviewPage"', () => {
-      const component = renderer.create(<OverviewPage {...props} />)
-      expect(component).toMatchSnapshot()
-    })
+  it('render properly', () => {
+    expect(app).toMatchSnapshot()
+  })
+
+  it('renders overview twice', () => {
+    expect(app.find('div')).toHaveLength(2)
   })
 })
